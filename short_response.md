@@ -15,45 +15,44 @@ to check how it is rendered before submitting.
 
 ## Question 1
 
-Running `python3 main.py` prints one correct answer and then this:
+A teammate has rewritten four functions as one-liners, and opened a pull
+request titled "tidy up loops".
 
+```py
+# 1. find the first user who has not paid
+unpaid = [u for u in users if not u["paid"]][0]
+
+# 2. print a greeting for everyone
+[print(f"Hi {u['name']}") for u in users]
+
+# 3. count how many users are in each city
+counts = {c: len([u for u in users if u["city"] == c])
+          for c in [u["city"] for u in users]}
+
+# 4. the three highest scores
+top = sorted(scores)[-3:]
 ```
-Traceback (most recent call last):
-  File "main.py", line 4, in <module>
-    print(checkout(100, "guest"))
-          ~~~~~~~~^^^^^^^^^^^^^^
-  File "app/store.py", line 14, in checkout
-    return apply_discount(total, percent)
-  File "app/store.py", line 9, in apply_discount
-    return total - (total * percent_off / 100)
-                    ~~~~~~^~~~~~~~~~~~~
-TypeError: unsupported operand type(s) for *: 'int' and 'NoneType'
-```
+
+You are reviewing it.
 
 ### Prompt 1
 
-Explain this traceback to somebody who has never read one.
+Write the review. For **each** of the four:
 
-Cover all five:
+- Say whether a comprehension is the right tool here, and why.
+- If it is wrong, say what it should be instead and what it costs as written.
+  "It is less readable" is not an answer on its own. Say what breaks, what it
+  does extra, or what a reader would get wrong.
+- If it is right, say so plainly and move on. Not every line in a pull request
+  needs changing.
 
-- **Where to start reading, and why.** Say which line you read first and what
-  it tells you, then work back through the rest in the order you actually use
-  them.
-- **What each of the three `File` lines is doing there.** They are not three
-  errors. Say what the list as a whole represents.
-- **The error in plain language.** What did Python refuse to do, and what was
-  the value it refused to do it with?
-- **Where the bad value came from.** The error appears on line 9 of
-  `app/store.py`. That is not where the problem started. Name the line that
-  produced the value, and say what in the program made it come out that way.
-- **Which line the fix belongs on, and why.** There is more than one place you
-  *could* change to stop the crash. Say which one you would change and what is
-  wrong with the others.
+Then finish with one paragraph: **what question do you ask yourself to decide
+between a loop and a comprehension?** One sentence that would actually settle
+it, not a list of considerations.
 
-That fourth and fifth part are the whole exercise. A traceback points at the
-line that could not cope, which is usually downstream of the line that is
-actually wrong. Learning to read past the arrow is what separates somebody who
-can fix a bug from somebody who can make an error message go away.
+Number 4 is the interesting one. It returns the three highest scores, and it
+returns them smallest first. Say whether that is a bug, and what you would
+need to know before deciding.
 
 ### Response 1
 
