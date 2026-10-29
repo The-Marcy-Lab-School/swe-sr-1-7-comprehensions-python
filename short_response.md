@@ -26,8 +26,9 @@ unpaid = [u for u in users if not u["paid"]][0]
 [print(f"Hi {u['name']}") for u in users]
 
 # 3. count how many users are in each city
-counts = {c: len([u for u in users if u["city"] == c])
-          for c in [u["city"] for u in users]}
+counts = {}
+for city in [user["city"] for user in users]:
+    counts[city] = counts.get(city, 0) + 1
 
 # 4. the three highest scores
 top = sorted(scores)[-3:]
@@ -50,9 +51,8 @@ Then finish with one paragraph: **what question do you ask yourself to decide
 between a loop and a comprehension?** One sentence that would actually settle
 it, not a list of considerations.
 
-Number 4 is the interesting one. It returns the three highest scores, and it
-returns them smallest first. Say whether that is a bug, and what you would
-need to know before deciding.
+Number 4 is an interesting one! Try recreating an unsorted `scores` list and
+then run the code. Does it produce the right order? Is it a bug or a feature?
 
 ### Response 1
 
