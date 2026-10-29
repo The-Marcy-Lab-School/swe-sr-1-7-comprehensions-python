@@ -16,7 +16,7 @@ before you start to quiz you until you can name each tool and what it is for
 without notes. Paste this if you want that kind of help:
 
 > You are acting as a tutor. Quiz me on Python comprehensions, sum, min, max,
-> sorted, enumerate, zip, any and all, until I can say what each one is for
+> len, sorted, enumerate and the accumulator pattern, until I can say what each one is for
 > and when it is the wrong choice. Tell me when my reasoning is wrong or
 > imprecise. Do not write or rewrite any part of my response for me.
 

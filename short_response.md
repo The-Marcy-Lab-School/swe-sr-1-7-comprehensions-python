@@ -25,10 +25,8 @@ unpaid = [u for u in users if not u["paid"]][0]
 # 2. print a greeting for everyone
 [print(f"Hi {u['name']}") for u in users]
 
-# 3. count how many users are in each city
-counts = {}
-for city in [user["city"] for user in users]:
-    counts[city] = counts.get(city, 0) + 1
+# 3. count how many users live in Chicago
+in_chicago = len([u for u in users if u["city"] == "Chicago"])
 
 # 4. the three highest scores
 top = sorted(scores)[-3:]
